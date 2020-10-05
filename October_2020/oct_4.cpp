@@ -25,26 +25,38 @@
 // integers X? For example, if X = {1, 3, 5}, you could climb
 // 1, 2, 3, or 5 steps at a time.
 
-//1 1 1 1 1
-//2, 1, 1, 1
-//1, 2, 1, 1
-//1, 1, 2, 1
-//1, 1, 1, 2
-//2, 2, 1
-//2, 1, 2
-//1, 2, 2
-//3 1 1
-//1 3 1
-//1 1 3
-//2 3
-//3 2
-//5
+//1 1 1 1 1 1
+//2, 1, 1, 1 1
+//1, 2, 1, 1 1
+//1, 1, 2, 1 1
+//1, 1, 1, 2 1
+//1, 1, 1, 1, 2
+//2, 2, 1, 1
+//2, 1, 2, 1
+//2, 1, 1, 2
+//1, 2, 1, 2
+//1, 2, 2, 1
+//1, 1, 2, 2
+//2 2 2
+//3 1 1 1
+//1 3 1 1
+//1 1 3 1
+//1 1 1 3
+//1 2 3
+//2 1 3
+//3 1 2
+//3 2 1
+//2 3 1
+//1 3 2
+//3 3
+//5 1
+//1 5
 
 int findNumOfStairClimbPossible(int numOfStairs, int numOfStairsPossible[], int arrLength);
 
 int main() {
     int numOfStairsPossible[] = {1, 2, 3, 5};
-    int numOfStairs = 5;
+    int numOfStairs = 6;
 
     //Found this solution on Google but I love this!!!
     //Pointer arithmetic is so f*ing cool!!! By finding
