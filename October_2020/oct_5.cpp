@@ -13,41 +13,52 @@
 int findLongestSub(const char string[], int numOfDistinct, int strLen);
 
 int main(){
-    const char string[] = "acbcccccba";
+    const char string[] = "ccbccccbcc";
     int strLen = *(&string + 1) - string;
-    int numDistinct = 3;
+    int numDistinct = 2;
 
     std::cout<<findLongestSub(string, numDistinct, strLen);
 }
 
-int findLongestSub(char string[], int numOfDistinct, int strLen){
+int findLongestSub(const char string[], int numOfDistinct, int strLen){
     int numOfDistinctInRun = 0;
     int maxRunLength = 0;
     int lenOfCurrRun = 0;
     char currRun[numOfDistinct];
     bool isDistinct = true;
 
+    for (int i = 0; i < strLen; i++) {
 
-    for (int j = 0; j < numOfDistinct; ++j) {
-        if (currRun[j] == string[0]){
-            isDistinct = false;
+        while (numOfDistinctInRun <= numOfDistinct && i + lenOfCurrRun + 1 != strLen){
+
+            for (int j = 0; j < numOfDistinct; ++j) {
+                if (currRun[j] == string[i+lenOfCurrRun]){
+                    isDistinct = false;
+                }
+            }
+
+            if (isDistinct){
+                currRun[numOfDistinctInRun] = string[i+lenOfCurrRun];
+                numOfDistinctInRun++;
+            }
+
+            lenOfCurrRun++;
+            isDistinct = true;
         }
-    }
-
-    if (isDistinct){
-        currRun[numOfDistinctInRun] = string[0];
-        numOfDistinctInRun++;
 
         if (numOfDistinctInRun > numOfDistinct){
-            maxRunLength = (lenOfCurrRun > maxRunLength) ? lenOfCurrRun : maxRunLength;
+            lenOfCurrRun--;
+        }
 
-            lenOfCurrRun = 0;
-            numOfDistinctInRun = 0;
-            for (int j = 0; j < numOfDistinct; ++j) {
-                currRun[j] = '\0';
-            }
+        maxRunLength = (lenOfCurrRun > maxRunLength) ? lenOfCurrRun : maxRunLength;
+
+        lenOfCurrRun = 0;
+        numOfDistinctInRun = 0;
+
+        for (int j = 0; j < numOfDistinct; ++j) {
+            currRun[j] = '\0';
         }
     }
 
-    return ;
+    return maxRunLength;
 }
