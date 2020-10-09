@@ -10,3 +10,7 @@ add_executable(October_5 October_2020/oct_5.cpp)
 add_executable(October_6 October_2020/oct_6.cpp)
 
 add_executable(October_7 October_2020/oct_7.cpp)
+
+add_library(linked October_2020/Oct_8th/ReverseLinkedList.cpp October_2020/Oct_8th/ReverseLinkedList.h)
+add_library(node October_2020/Oct_8th/Node.cpp October_2020/Oct_8th/Node.h)
+target_link_libraries(linked PUBLIC node)
