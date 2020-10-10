@@ -1,3 +1,4 @@
+#include <iostream>
 //Good morning! Here's your coding interview
 // problem for today.
 //
@@ -19,21 +20,44 @@
 // the input array in-place and you do not need to
 // store the results. You can simply print them out
 // as you compute them.
+void findLargestOfSubArray(int k, int nums[], int lenOfNums);
 
 int main(){
-
+    int nums[] = {10, 5, 2, 7, 8, 7};
+    int k = 3;
+    int lenOfNums = *(&nums + 1) - nums;
+    findLargestOfSubArray(k, nums, lenOfNums);
 }
 
-int findLargestOfSubArray(int k, int nums[]){
+void findLargestOfSubArray(int k, int nums[], int lenOfNums){
     int currLastIndex = 0;
     int maxIndex = 0;
-    int lenOfNums = *(&nums + 1) - nums;
-    int maxNums[lenOfNums/k];
+    int secondMaxIndex = 0;
 
     for(int i = 0; i < lenOfNums; i++){
         if (i > k){
             currLastIndex++;
         }
+        if (nums[i] >= nums[maxIndex]){
+            secondMaxIndex = maxIndex;
+            maxIndex = i;
+        }
 
+        if (i - k == maxIndex || i == k + currLastIndex){
+            std::cout<<nums[maxIndex]<<' ';
+
+            int tempSecond = 0;
+            for (int j = 0; j < k; ++j) {
+                if (nums[i-j] > tempSecond && i-j != maxIndex && i-j != secondMaxIndex){
+                    tempSecond = i-j;
+                }
+            }
+            maxIndex = secondMaxIndex;
+            secondMaxIndex = tempSecond;
+        }
+
+        if (nums[i] >= nums[secondMaxIndex] && maxIndex != i){
+            secondMaxIndex = i;
+        }
     }
 }
