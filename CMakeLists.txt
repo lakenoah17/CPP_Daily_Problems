@@ -16,3 +16,6 @@ add_library(node October_2020/Oct_8th/Node.cpp October_2020/Oct_8th/Node.h)
 target_link_libraries(linked PUBLIC node)
 
 add_executable(October_10 October_2020/oct_10.cpp)
+
+add_executable(October_11 October_2020/oct_11.cpp)
+

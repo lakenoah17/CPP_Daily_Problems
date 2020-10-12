@@ -17,7 +17,7 @@
 double findPI(double numOfRandAttempts);
 
 int main(){
-    std::cout<<findPI(1000);
+    std::cout<<findPI(1000000);
 }
 
 double findPI(double numOfRandAttempts){
