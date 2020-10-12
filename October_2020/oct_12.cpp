@@ -39,24 +39,24 @@ int main(){
     node1->next = nullptr;
 
     Node *node2 = new Node;
-    node1->data = 8;
-    node1->next = node1;
+    node2->data = 8;
+    node2->next = node1;
 
     Node *node3 = new Node;
-    node1->data = 7;
-    node1->next = node2;
+    node3->data = 7;
+    node3->next = node2;
 
     Node *node4 = new Node;
-    node1->data = 3;
-    node1->next = node3;
+    node4->data = 3;
+    node4->next = node3;
 
     Node *node5 = new Node;
-    node1->data = 1;
-    node1->next = node2;
+    node5->data = 1;
+    node5->next = node2;
 
     Node *node6 = new Node;
-    node1->data = 99;
-    node1->next = node5;
+    node6->data = 99;
+    node6->next = node5;
 
     auto *list1 = new LinkedList;
     list1->head = node4;
@@ -80,7 +80,7 @@ int findIntersect(struct LinkedList *list1, struct LinkedList *list2){
     for (int i = 0; i < runLen; ++i) {
         if (i >= diffInLen){
             if (list2CurrNode->data == list1CurrNode->data){
-                return i;
+                return list2CurrNode->data;
             }
 
             list2CurrNode = list2CurrNode->next;
