@@ -1,3 +1,6 @@
+#include <math.h>
+#include <iostream>
+
 //This problem was asked by Facebook.
 //
 //A builder is looking to build a row of N
@@ -11,31 +14,52 @@
 // build the nth house with kth color,
 // return the minimum cost which achieves
 // this goal.
+int findLowestCost(int row, int rowCount, int length, int **costs, int lastColorIndex);
+int findLowestIndex(int nums[], int length, int indexToExclude = -1);
+
 
 int main(){
     int n = 4;
     int k = 4;
 
-    int costs[4][4] = {{100,100,200,300},
-                       {200,300,400,100},
-                       {300,200,100,200},
-                       {400,400,200,400}};
+    int * costs[4] = {new int[4]{100,100,200,300},
+                      new int[4]{200,300,400,100},
+                      new int[4]{300,200,100,200},
+                      new int[4]{400,400,200,400}};
 
-
+    std::cout<<findLowestCost(0,n,k,costs,-1);
 }
 
-int findLowestCost(int n, int k, int costs[n][k]){
+int findLowestCost(int row, int rowCount, int length, int **costs, int lastColorIndex){
+    int lowestIndex = findLowestIndex(costs[row], length);
 
-}
-
-int findLowestCostUtil(int lastColorIndex, int nums[]){
-
-}
-
-int findLowest(int num1, int num2){
-    if (num1 < num2){
-        return num1;
+    if (lowestIndex == lastColorIndex){
+        return -1;
     }
 
-    return num2;
+    if (row == rowCount){
+        return costs[row][lowestIndex];
+    }
+
+    int returnedVal = findLowestCost(row + 1, rowCount, length, costs, lowestIndex);
+
+    while (returnedVal != -1){
+        lowestIndex = findLowestIndex(costs[row], length, lowestIndex);
+        returnedVal = findLowestCost(row + 1, rowCount, length, costs, lowestIndex);
+    }
+
+    return returnedVal + costs[row][lowestIndex];
+
+}
+
+int findLowestIndex(int nums[], int length, int indexToExclude){
+    int lowestIndex = 0;
+
+    for (int i = 1; i < length; ++i) {
+        if (nums[i] < nums[lowestIndex] && i != indexToExclude){
+            lowestIndex = i;
+        }
+    }
+
+    return lowestIndex;
 }
