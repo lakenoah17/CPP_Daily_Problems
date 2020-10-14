@@ -19,3 +19,5 @@ add_executable(October_12 October_2020/oct_12.cpp)
 
 add_executable(October_13 October_2020/oct_13.cpp)
 
+add_executable(October_14 October_2020/oct_14.cpp)
+
