@@ -12,6 +12,8 @@ class Node {
         Node *leftChild;
         Node *rightChild;
         bool locked;
+        bool lockUtil(Node * currNode);
+
     public:
         Node(Node * parent);
         Node * getParent();
@@ -21,7 +23,6 @@ class Node {
         void setRightChild(Node * rightChild);
         bool isLocked();
         bool lock();
-        bool lockUtil(Node * currNode);
         bool unlock();
 };
 
