@@ -29,7 +29,7 @@ int main(){
     std::cout<<findExpressionMatch("ra.","ray")<<'\n';
     std::cout<<findExpressionMatch("ra.","raymond")<<'\n';
 
-    std::cout<<findExpressionMatch(".*at","chhhhhhhhatat")<<'\n';
+    std::cout<<findExpressionMatch(".*at","chhhhhhhhat")<<'\n';
     std::cout<<findExpressionMatch(".*at","chats")<<'\n';
 }
 
