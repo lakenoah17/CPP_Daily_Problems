@@ -16,21 +16,21 @@
 // characters. You can assume the string to be
 // decoded is valid.
 
-char* encode(char* strToEncode, int strLen);
-char* decode(char* strToDecode, int strLen);
+char* encode(const char* strToEncode, int strLen);
+char* decode(const char* strToDecode, int strLen);
 
 int main(){
     char* str = encode("AAAABBBCCDAA", 12);
     int strLen = strlen(str);
     std::cout<<str<<'\n';
 
-    char* decoded = decode(str, strLen);
+    char* decoded = decode((const char *) str, strLen);
 
     std::cout<<decoded;
     return 0;
 }
 
-char * encode(char* strToEncode, int strLen){
+char * encode(const char* strToEncode, int strLen){
     char* encoded = new char;
     int encodedIndex = 0;
     int runLength = 0;
@@ -66,7 +66,7 @@ char * encode(char* strToEncode, int strLen){
     return encoded;
 }
 
-char * decode(char* strToDecode, int strLen){
+char * decode(const char* strToDecode, int strLen){
     char * decoded = new char;
     int decodedIndex = 0;
 
