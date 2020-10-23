@@ -24,8 +24,8 @@
 int findNumOfWater(int map[], int mapSize);
 
 int main(){
-    int map[] = {0,4,0,3};
-    std::cout<<findNumOfWater(map, 4);
+    int map[] = {3, 0, 1, 3, 0, 2};
+    std::cout<<findNumOfWater(map, 6);
 }
 
 int findNumOfWater(int map[], int mapSize){
@@ -37,14 +37,14 @@ int findNumOfWater(int map[], int mapSize){
 
     for (int i = 1; i < mapSize; ++i) {
         if (currMaxWallVal <= map[i]){
-            waterTotal += (i - tallestWallIndex - 1) * (currMaxWallVal - secondMaxWall);
+            waterTotal += (i - tallestWallIndex) * (currMaxWallVal - secondMaxWall + 1);
             secondMaxWall = 0;
             currMaxWallVal = map[i];
             secondTallestWallIndex = i;
             tallestWallIndex = i;
         }
         else if (secondMaxWall <= map[i]){
-            waterTotal += (i - secondTallestWallIndex - 1) * (map[i] - secondMaxWall);
+            waterTotal += (tallestWallIndex - secondTallestWallIndex) * (map[i] - secondMaxWall);
             secondMaxWall = map[i];
             secondTallestWallIndex = i;
         }
