@@ -14,6 +14,7 @@
 
 
 int main(){
-    double conversions[5][5] = {new double []}
+    double conversions[5][5];
+
 }
 
